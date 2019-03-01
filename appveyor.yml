@@ -28,9 +28,8 @@ install:
 # source: https://github.com/starkat99/appveyor-rust/blob/master/appveyor.yml#L113
 build: false
 
-# Equivalent to Travis' `script` phase
-# TODO modify this phase as you see fit
+# XXX todo(tmfink): remove `--test-threads=1` once aquynh/capstone#1397 is fixed
 test_script:
   - cd capstone-rs
   - cargo build -v
-  - cargo test -v
+  - cargo test -v -- --test-threads=1
