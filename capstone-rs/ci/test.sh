@@ -196,9 +196,10 @@ run_tests() {
             --features "$FEATURES"
             --verbose
             )
+        # XXX todo(tmfink): remove `--test-threads=1` once aquynh/capstone#1397 is fixed
         expect_exit_status "$SHOULD_FAIL" \
             cargo test "${cargo_cmd_args[@]}" \
-            --color=always -- --color=always \
+            --color=always -- --color=always --test-threads=1 \
             2>&1 | tee "$TMPFILE"
         # Use 2>&1 above instead of '|&' because OS X uses Bash 3
 
